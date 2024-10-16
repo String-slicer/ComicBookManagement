@@ -1,103 +1,62 @@
-
 # Comic Book Management API
 
-A backend API for managing a comic book inventory, allowing you to create, read, update, and delete (CRUD) comic book data. This project is built using Node.js, Express, and MongoDB.
+This project is a RESTful API built with Node.js and MongoDB to manage a collection of comic books. The API allows you to perform CRUD operations (Create, Read, Update, Delete) on comic book records, with additional features like pagination, filtering, and sorting.
 
 ## Features
 
-### Comic Book Management:
-- **Create a Comic Book:** Add new comic books with details like name, author, price, condition, etc.
-- **Edit a Comic Book:** Modify existing comic book information.
-- **Delete a Comic Book:** Remove comic books from the inventory.
-  
-### Comic Book List:
-- Fetch the list of all comic books with pagination.
-- Filter by author, year, price, condition, etc.
-- Sort by attributes like price, year, or alphabetically.
+- **Create a Comic Book**: Add a new comic book to the inventory by providing details such as name, author, year, price, condition, etc.
+- **Edit a Comic Book**: Update existing comic book information like price, condition, or discount.
+- **Delete a Comic Book**: Remove a comic book from the inventory.
+- **Fetch Comic Book List**: Retrieve all available comic books with pagination, filtering, and sorting options.
+- **Get Comic Book Details**: View detailed information about a specific comic book.
 
-### Comic Book Details:
-- Retrieve full details of a specific comic book by ID.
+## Technologies Used
 
-## Project Structure
+- **Node.js**: JavaScript runtime for building the API.
+- **Express**: Web framework for Node.js to handle routing and middleware.
+- **MongoDB**: NoSQL database for storing comic book data.
+- **Mongoose**: ODM for MongoDB to manage relationships and schema validation.
 
-```
-📁 ComicBookManagementAPI
-├── 📁 config
-│   └── db.js            # MongoDB connection setup
-├── 📁 controllers
-│   └── comicController.js  # API logic for managing comics
-├── 📁 models
-│   └── comicModel.js     # Mongoose schema for comics
-├── 📁 routes
-│   └── comicRoutes.js    # Route definitions for APIs
-├── 📁 postman
-│   └── ComicBookCollection.json  # Postman collection for API testing
-├── app.js                # Main application file
-├── package.json          # Project metadata and dependencies
-└── .gitignore            # Files and directories to be ignored in Git
-```
+## Installation
 
-## Prerequisites
-
-Before you begin, ensure you have the following installed:
-- **Node.js** (version 12.x or higher)
-- **MongoDB** (local or cloud instance)
-
-## Setup and Installation
-
-1. **Clone the repository:**
+1. Clone the repository:
    ```bash
-   git clone https://github.com/String-slicer/comic-book-management-api.git
-   cd comic-book-management-api
+   git clone https://github.com/String-slicer/ComicBookManagement
+   cd ComicBookManagementAPI
    ```
 
-2. **Install dependencies:**
+2. Install the dependencies:
    ```bash
    npm install
    ```
 
-3. **Set up MongoDB:**
-   - Create a `.env` file in the root directory with the following:
-     ```
-     MONGO_URI=mongodb://localhost:27017/comicbooks
-     PORT=5000
-     ```
-
-4. **Run the server:**
+3. Make sure you have MongoDB installed and running locally. You can start MongoDB using:
    ```bash
-   npm start
+   mongod
    ```
 
-The server will start at `http://localhost:5000`.
+4. Start the server:
+   ```bash
+   node app.js
+   ```
+
+5. The server will run on `http://localhost:5000` by default.
 
 ## API Endpoints
 
-### Comic Book Management
+### Comic Book Routes
 
-- **Create Comic**: `POST /api/comics`
-- **Edit Comic**: `PUT /api/comics/:id`
-- **Delete Comic**: `DELETE /api/comics/:id`
+- **POST /api/comics**: Create a new comic book.
+- **PUT /api/comics/:id**: Update an existing comic book by ID.
+- **DELETE /api/comics/:id**: Delete a comic book by ID.
+- **GET /api/comics**: Retrieve all comic books with pagination, filtering, and sorting.
+- **GET /api/comics/:id**: Get details of a specific comic book by ID.
 
-### Comic Book List
+## Postman Collection
 
-- **Get All Comics**: `GET /api/comics`
-- **Get Comic by ID**: `GET /api/comics/:id`
-
-## Testing with Postman
-
-- Import the Postman collection file (`postman/ComicBookCollection.json`) to test the API endpoints.
-- You can use Postman to interact with the API for adding, updating, and deleting comic books.
+You can find the Postman collection for testing the API in the `postman` directory.
 
 ## Error Handling
 
-All errors are handled and returned in a format suitable for a React frontend. Example response for an error:
-```json
-{
-  "message": "Comic not found",
-  "status": 404
-}
-```
+All API endpoints include error handling to ensure meaningful error messages are returned for invalid requests or operations.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
